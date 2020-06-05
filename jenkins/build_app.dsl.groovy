@@ -21,8 +21,11 @@ def gitUrl = 'git://github.com/test/test'
 //    }
 //}
 
-job('my-new-seeded-job') {
-  steps {
-    sh('echo Hello World!')
-  }
+pipelineJob('python_dsl_job_example') {
+    definition {
+        cps {
+            script(readFileFromWorkspace('jenkins/build_app.groovy'))
+            sandbox()
+        }
+    }
 }
