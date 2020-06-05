@@ -6,8 +6,8 @@ pipeline {
                 //Check branch name
                 //String  = env.BRANCH_NAME
                 //println('Branch name: ' + env.BRANCH_NAME) //development
-                jobName = env.JOB_NAME
-                jobName = jobName.replace("/","_")
+                env.jobName = env.JOB_NAME
+                env.jobName = env.jobName.replace("/","_")
                 println('Job name: ' + jobName) //building-a-multibranch-pipeline-project/development
                 //println('Job base name: ' + env.JOB_BASE_NAME) //development
                 sh 'echo "Print script echo:"'
