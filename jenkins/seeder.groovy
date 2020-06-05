@@ -3,10 +3,7 @@ pipeline {
     stages {
         stage('Create') { 
             steps {
-                
-                scm {
-                    git("$REPOSITORY_URL")
-                }
+                sh "ls -lrht"
                 jobDsl targets: 'jenkins/build-app.dsl.groovy',
                     ignoreExisting: true,
                     additionalParameters: [
