@@ -5,12 +5,9 @@ pipeline {
             steps {
                 //Check branch name
                 //String  = env.BRANCH_NAME
-                print('Branch name: ')
-                println(env.BRANCH_NAME)
-                print('Job name: ')
-                println(env.JOB_NAME)
-                print('Job base name: ')
-                println(env.JOB_BASE_NAME)
+                println('Branch name: ' + env.BRANCH_NAME)
+                println('Job name: ' + env.JOB_NAME)
+                println('Job base name: ' + env.JOB_BASE_NAME)
                 sh 'echo "Print script echo:"'
                 sh 'echo "Checking if jobs exists"'
                 //Check build-app-job exists
