@@ -10,7 +10,7 @@ def gitUrl = 'git://github.com/test/test'
 //}
 
 
-pipeline {
+pipeline ("my_new_pipeline") {
     agent any
     stages {
         stage('Build') { 
