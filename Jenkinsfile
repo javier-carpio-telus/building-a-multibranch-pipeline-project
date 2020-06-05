@@ -17,7 +17,7 @@ pipeline {
                 sh 'echo "Checking if jobs exists"'
                 //Check build-app-job exists
                 build job: 'JobSeeder', parameters: [
-                    [$class: 'StringParameterValue', name: 'NEW_JOB_NAME', value: jobName + "_build-app"],
+                    [$class: 'StringParameterValue', name: 'NEW_JOB_NAME', value: "${myJobName}_build-app"],
                     [$class: 'StringParameterValue', name: 'REPOSITORY_URL', value: scm.getUserRemoteConfigs()[0].getUrl()],
                     [$class: 'StringParameterValue', name: 'DSL_PATH', value: 'jenkins/build-app.dsl.groovy']
                 ]
@@ -33,26 +33,26 @@ pipeline {
         
         stage('Build app') {
             steps {
-                sh 'echo "Hello world!"'
+                sh 'echo "Hello world! Build app"'
             }
         }
         
         stage('Build image') {
             steps {
-                sh 'echo "Hello world!"'
+                sh 'echo "Hello world! build image"'
             }
         }
         
         stage('Upload image') {
             steps {
-                sh 'echo "Hello world!"'
+                sh 'echo "Hello world! upload image"'
             }
         }
 
         
         stage('Deploy image') {
             steps {
-                sh 'echo "Hello world!"'
+                sh 'echo "Hello world! deploy image"'
             }
         }
 
