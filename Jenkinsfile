@@ -13,10 +13,10 @@ pipeline {
                 sh 'echo "Print script echo:"'
                 sh 'echo "Checking if jobs exists"'
                 //Check build-app-job exists
-                build job: 'testDSL', parameters: [
+                build job: 'JobSeeder', parameters: [
                     [$class: 'StringParameterValue', name: 'NEW_JOB_NAME', value: jobName + "_build-app"],
                     [$class: 'StringParameterValue', name: 'REPOSITORY_URL', value: scm.getUserRemoteConfigs()[0].getUrl()],
-                    [$class: 'StringParameterValue', name: 'DSL_PATH', value: ]
+                    [$class: 'StringParameterValue', name: 'DSL_PATH', value: 'jenkins/build-app.dsl.groovy']
                 ]
                 //if (jenkins.model.Jenkins.instance.getItem( env.JOB_NAME + "_build-app" ) != null) {
                 //    println("Job " + env.JOB_NAME + "_build-app" + " exists." )
