@@ -1,3 +1,5 @@
+def myJobName = env.JOB_NAME.replace("/","_")
+
 pipeline {
     agent any
     stages {
@@ -6,9 +8,10 @@ pipeline {
                 //Check branch name
                 //String  = env.BRANCH_NAME
                 //println('Branch name: ' + env.BRANCH_NAME) //development
-                env.jobName = env.JOB_NAME
-                env.jobName = env.jobName.replace("/","_")
-                println('Job name: ' + jobName) //building-a-multibranch-pipeline-project/development
+                //env.jobName = env.JOB_NAME
+                //env.jobName = env.jobName.replace("/","_")
+                //println('Job name: ' + jobName) //building-a-multibranch-pipeline-project/development
+                println("Job name: $myJobName") //building-a-multibranch-pipeline-project/development
                 //println('Job base name: ' + env.JOB_BASE_NAME) //development
                 sh 'echo "Print script echo:"'
                 sh 'echo "Checking if jobs exists"'
