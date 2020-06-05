@@ -5,12 +5,19 @@ pipeline {
             steps {
                 //Check branch name
                 //String  = env.BRANCH_NAME
-                println('Branch name: ' + env.BRANCH_NAME)
-                println('Job name: ' + env.JOB_NAME)
-                println('Job base name: ' + env.JOB_BASE_NAME)
+                //println('Branch name: ' + env.BRANCH_NAME) //development
+                String jobName = env.JOB_NAME
+                jobName = jobName.replace("/","_")
+                println('Job name: ' + jobName) //building-a-multibranch-pipeline-project/development
+                //println('Job base name: ' + env.JOB_BASE_NAME) //development
                 sh 'echo "Print script echo:"'
                 sh 'echo "Checking if jobs exists"'
                 //Check build-app-job exists
+                build job: 'testDSL', parameters: [
+                    [$class: 'StringParameterValue', name: 'NEW_JOB_NAME', value: jobName + "_build-app"],
+                    [$class: 'StringParameterValue', name: 'REPOSITORY_URL', value: scm.getUserRemoteConfigs()[0].getUrl()],
+                    [$class: 'StringParameterValue', name: 'DSL_PATH', value: ]
+                ]
                 //if (jenkins.model.Jenkins.instance.getItem( env.JOB_NAME + "_build-app" ) != null) {
                 //    println("Job " + env.JOB_NAME + "_build-app" + " exists." )
                 //}
