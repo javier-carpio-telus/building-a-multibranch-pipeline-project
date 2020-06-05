@@ -11,6 +11,7 @@ def gitUrl = 'git://github.com/test/test'
 
 
 pipeline {
+    agent any
     stages {
         stage('Build') { 
             steps {
