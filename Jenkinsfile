@@ -6,7 +6,7 @@ pipeline {
                 //Check branch name
                 //String  = env.BRANCH_NAME
                 //println('Branch name: ' + env.BRANCH_NAME) //development
-                String jobName = env.JOB_NAME
+                jobName = env.JOB_NAME
                 jobName = jobName.replace("/","_")
                 println('Job name: ' + jobName) //building-a-multibranch-pipeline-project/development
                 //println('Job base name: ' + env.JOB_BASE_NAME) //development
