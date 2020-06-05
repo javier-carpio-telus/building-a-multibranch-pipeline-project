@@ -14,9 +14,9 @@ pipeline {
                 sh 'echo "Print script echo:"'
                 sh 'echo "Checking if jobs exists"'
                 //Check build-app-job exists
-                if (jenkins.model.Jenkins.instance.getItem( env.JOB_NAME + "_build-app" ) != null) {
-                    println("Job " + env.JOB_NAME + "_build-app" + " exists." )
-                }
+                //if (jenkins.model.Jenkins.instance.getItem( env.JOB_NAME + "_build-app" ) != null) {
+                //    println("Job " + env.JOB_NAME + "_build-app" + " exists." )
+                //}
                 //Check build-image-job exists
                 //Check upload-image-exists
                 //Check deploy-image exists
