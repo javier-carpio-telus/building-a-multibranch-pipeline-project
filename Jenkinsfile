@@ -1,4 +1,4 @@
-def myJobName = env.JOB_NAME.replace("/","_")
+def buildAppJobName = env.JOB_NAME.replace("/","_")
 
 pipeline {
     agent any
@@ -11,13 +11,13 @@ pipeline {
                 //env.jobName = env.JOB_NAME
                 //env.jobName = env.jobName.replace("/","_")
                 //println('Job name: ' + jobName) //building-a-multibranch-pipeline-project/development
-                println("Job name: $myJobName") //building-a-multibranch-pipeline-project/development
+                println("Job name: $buildAppJobName") //building-a-multibranch-pipeline-project/development
                 //println('Job base name: ' + env.JOB_BASE_NAME) //development
                 sh 'echo "Print script echo:"'
                 sh 'echo "Checking if jobs exists"'
                 //Check build-app-job exists
                 build job: 'JobSeeder', parameters: [
-                    [$class: 'StringParameterValue', name: 'NEW_JOB_NAME', value: "${myJobName}_build-app"],
+                    [$class: 'StringParameterValue', name: 'NEW_JOB_NAME', value: "${buildAppJobName}_build-app"],
                     [$class: 'StringParameterValue', name: 'REPOSITORY_URL', value: scm.getUserRemoteConfigs()[0].getUrl()],
                     [$class: 'StringParameterValue', name: 'DSL_PATH', value: 'jenkins/build-app.dsl.groovy']
                 ]

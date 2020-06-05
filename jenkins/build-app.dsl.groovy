@@ -1,13 +1,10 @@
 def gitUrl = 'git://github.com/test/test'
 
-job(${params.userFlag}) {
+job(${params.NEW_JOB_NAME}) {
     scm {
         git(gitUrl)
     }
-    triggers {
-        scm('*/15 * * * *')
-    }
     steps {
-        maven('-e clean test')
+        sh 'echo "Job created from seed!"'
     }
 }
